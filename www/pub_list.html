@@ -8,6 +8,7 @@
             {{pubs.length}} Pubs Drankled In
         </div>
     </ons-list-header>
-  
-    <ons-list-item modifier="tappable" ng-repeat="pub in pubs">{{pub.name}}</ons-list-item>
+
+    <input type="search" ng-model="query" placeholder="Search Pubs..." class="search-input">
+    <ons-list-item modifier="tappable" ng-repeat="pub in pubs | filter:query">{{pub.name}}</ons-list-item>
 </ons-list>
