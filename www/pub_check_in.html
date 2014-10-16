@@ -1,0 +1,35 @@
+<ons-toolbar>
+    <div class="center">Check In</div>
+</ons-toolbar>
+
+<div ng-controller="CheckinController">
+    <ons-list>
+        <ons-list-item>
+            <input id="checkin_form_pub_name" type="text" ng-model="name" placeholder="Pub Name" class="text-input text-input--transparent full-width-text-box">
+        </ons-list-item>
+        
+        <ons-list-item class="separator"></ons-list-item>        
+        <ons-list-item>
+            <input type="text" ng-model="latitude" placeholder="Latitude" class="text-input text-input--transparent full-width-text-box">
+        </ons-list-item>
+        <ons-list-item>
+            <input type="text" ng-model="longitude" placeholder="Longitude" class="text-input text-input--transparent full-width-text-box">
+        </ons-list-item>
+        <ons-list-item>
+            <ons-button modifier="cta" should-spin="{{loading}}" disabled="{{loading}}" ng-click="findGeoCoords()">
+                Load GPS coords
+            </ons-button>
+        </ons-list-item>
+        
+        <ons-list-item class="separator"></ons-list-item>    
+        <ons-list-item>
+            <textarea class="textarea" ng-model="review" placeholder="Pub Review"></textarea>
+        </ons-list-item>
+    </ons-list>
+    
+    <div class="content-padded">
+        <ons-button modifier="large" ng-click="submitPub()">
+            Submit New Pub
+        </ons-button>
+    </div>
+</div>

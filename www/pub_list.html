@@ -1,0 +1,13 @@
+<ons-toolbar>
+    <div class="center">Dublin Pub List</div>
+</ons-toolbar>
+
+<ons-list ng-controller="PubListController">
+    <ons-list-header>
+        <div class="center">
+            {{pubs.length}} Pubs Drankled In
+        </div>
+    </ons-list-header>
+  
+    <ons-list-item modifier="tappable" ng-repeat="pub in pubs">{{pub.name}}</ons-list-item>
+</ons-list>

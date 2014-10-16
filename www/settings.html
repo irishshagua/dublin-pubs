@@ -1,0 +1,33 @@
+<ons-toolbar>
+    <div class="center">Settings</div>
+</ons-toolbar>
+
+<div ng-controller="GlobalSettingsController">
+    <ons-list>
+        <ons-list-item>
+            <input type="text" placeholder="Pubs API Domain" ng-model="pubsApiDomain"  class="text-input text-input--transparent full-width-text-box">
+        </ons-list-item>
+        <ons-list-item></ons-list-item>
+        
+        <ons-list-item>
+            <input type="text" ng-model="pubsApiVersion" placeholder="Pubs API Version" class="text-input text-input--transparent full-width-text-box">
+        </ons-list-item>
+        <ons-list-item></ons-list-item>
+        
+        <ons-list-item>
+            <input type="text" ng-model="pubsApiLogin" placeholder="Pubs API Login" class="text-input text-input--transparent full-width-text-box">
+        </ons-list-item>
+        <ons-list-item></ons-list-item>
+        
+        <ons-list-item>
+            <input type="text" ng-model="pubsApiPassword" placeholder="Pubs API Password" class="text-input text-input--transparent full-width-text-box">
+        </ons-list-item>
+        <ons-list-item></ons-list-item>
+    </ons-list>
+    
+    <div class="content-padded">
+        <ons-button modifier="cta" ng-click="persistToStorage();">
+            Re-Load Pubs
+        </ons-button>
+    </div>
+</div>
