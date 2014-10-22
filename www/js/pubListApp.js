@@ -12,14 +12,8 @@ var pubListApp = angular.module('pubListApp', ['onsen', 'ngCordova', 'ngResource
  * external Pub List API
  */
  pubListApp.factory('PubResource', function($resource) {
-	return $resource('https://mooneyspublist.apispark.net/v1/pubs/', {})
+	return $resource('https://mooneyspublist.apispark.net/v1/pubs', {});
  });
-
-pubListApp.service('PubListRestApiService', function () {
-    this.submitPub = function (pub) {
-        console.log("Submit Pub: " + pub.name + " " + pub.latitude + " " + pub.longitude + " " + pub.review);
-    };
-});
 
 
 /**
@@ -37,18 +31,20 @@ pubListApp.controller('PubListController', function ($scope, PubResource) {
  * CheckinController
  *
  */
-pubListApp.controller('CheckinController', function ($scope, $cordovaGeolocation, PubListRestApiService) {
+pubListApp.controller('CheckinController', function ($scope, $cordovaGeolocation, PubResource) {
     $scope.loading = false;
 
     $scope.submitPub = function () {
-        PubListRestApiService.submitPub(
-           {
-               name: $scope.name,
-               latitude: $scope.latitude,
-               longitude: $scope.longitude,
-               review: $scope.review
-           }
-        );
+        PubResource.save({
+    		'review': [
+        		$scope.review
+    		],
+    		'longitude': $scope.longitude,
+    		'latitude': $scope.latitude,
+    		'name': $scope.pubName
+		}, function(response) {
+			alert('Pub Added To Database');
+		});
     };
 
     $scope.findGeoCoords = function () {
