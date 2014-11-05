@@ -1,9 +1,0 @@
-<ons-toolbar>
-    <div class="center">Map</div>
-</ons-toolbar>
-
-<div ng-controller="MapController">
-    <ui-gmap-google-map center="map.center" zoom="map.zoom">
-		<ui-gmap-marker ng-repeat="pub in pubs" idKey="pub.id" coords="pub.coords"></ui-gmap-marker>
-    </ui-gmap-google-map>
-</div>

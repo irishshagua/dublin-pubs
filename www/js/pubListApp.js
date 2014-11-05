@@ -2,7 +2,7 @@
  * This is the main JS file for the app. It contains the angular
  * controller and service definitions.
  */
-var pubListApp = angular.module('pubListApp', ['onsen', 'ngCordova', 'ngResource', 'uiGmapgoogle-maps']);
+var pubListApp = angular.module('pubListApp', ['onsen', 'ngCordova', 'ngResource', 'google-maps']);
 
 
 /**
@@ -12,7 +12,7 @@ var pubListApp = angular.module('pubListApp', ['onsen', 'ngCordova', 'ngResource
  * external Pub List API
  */
  pubListApp.factory('PubResource', function($resource) {
-	return $resource('https://mooneyspublist.apispark.net/v1/pubs', {});
+	return $resource('https://31470a49-34fc-4d90-99a1-59bd8cd0d343\\:962226ba-8ae0-4d76-bac6-3d3ac50b2a6a@mooneyspublist.apispark.net/v1/pubs', {});
  });
 
 
@@ -71,22 +71,29 @@ pubListApp.controller('CheckinController', function ($scope, $cordovaGeolocation
  * MapController
  */
 pubListApp.controller('MapController', function($scope, PubResource) {
-	$scope.map = {
-		center: {
-			latitude: 53.3468,
-			longitude: -6.2412
-		},
-		zoom: 13
-	};
+    $scope.map = {
+      control: {},
+      center: {
+        latitude: 53.3468,
+        longitude: -6.2412
+      },
+      options: {
+        streetViewControl: false,
+        panControl: false,
+        maxZoom: 20,
+        minZoom: 3
+      },
+      zoom: 13,
+      dragging: false
+    };
+
+	$scope.onMarkerClicked = function (marker) {
+        marker.showWindow = true;
+        $scope.$apply();
+    };
 
 	$scope.pubs = [];
 	PubResource.get({}, function(data) {
 		$scope.pubs = data.list;
-		angular.forEach($scope.pubs, function(pub) {
-			pub.coords = {
-				latitude: pub.latitude,
-				longitude: pub.longitude
-			};
-		});
 	});
 });
