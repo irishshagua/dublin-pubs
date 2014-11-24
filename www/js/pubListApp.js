@@ -21,8 +21,8 @@ var pubListApp = angular.module('pubListApp', ['onsen', 'ngCordova', 'ngResource
  *
  */
 pubListApp.controller('PubListController', function ($scope, PubResource) {
-	PubResource.get({}, function(data) {
-		$scope.pubs = data.list;
+	PubResource.query({}, function(data) {
+		$scope.pubs = data;
 	});
 });
 
@@ -91,7 +91,7 @@ pubListApp.controller('MapController', function($scope, PubResource) {
     };
 
 	$scope.pubs = [];
-	PubResource.get({}, function(data) {
-		$scope.pubs = data.list;
+	PubResource.query({}, function(data) {
+		$scope.pubs = data;
 	});
 });
