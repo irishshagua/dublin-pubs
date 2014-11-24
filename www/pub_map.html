@@ -3,21 +3,21 @@
 </ons-toolbar>
 
 <div ng-controller="MapController">
-    <google-map
+    <ui-gmap-google-map
     	center="map.center"
         zoom="map.zoom"
         dragging="map.dragging"
         draggable="true"
         control="map.control">
 
-        <marker ng-repeat="pub in pubs"  coords='pub' icon='pub.icon' ng-click='onMarkerClicked(pub)' idkey='pub.id'>
-        	<window show="pub.showWindow" ng-cloak>
+        <ui-gmap-marker ng-repeat="pub in pubs"  coords='pub' ng-click='onMarkerClicked(pub)' idkey='pub.id'>
+        	<ui-gmap-window show="pub.showWindow" ng-cloak>
             	<div>
                 	<h4>{{pub.name}}</h4>
-                	<p>{{pub.review[0]}}</p>
+                	<p>{{pub.review}}</p>
                 	<br/>
                 </div>
-            </window>
-        </marker>
-    </google-map>
+            </ui-gmap-window>
+        </ui-gmap-marker>
+    </ui-gmap-google-map>
 </div>

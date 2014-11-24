@@ -2,7 +2,7 @@
  * This is the main JS file for the app. It contains the angular
  * controller and service definitions.
  */
-var pubListApp = angular.module('pubListApp', ['onsen', 'ngCordova', 'ngResource', 'google-maps']);
+var pubListApp = angular.module('pubListApp', ['onsen', 'ngCordova', 'ngResource', 'uiGmapgoogle-maps']);
 
 
 /**
@@ -12,7 +12,7 @@ var pubListApp = angular.module('pubListApp', ['onsen', 'ngCordova', 'ngResource
  * external Pub List API
  */
  pubListApp.factory('PubResource', function($resource) {
-	return $resource('https://31470a49-34fc-4d90-99a1-59bd8cd0d343\\:962226ba-8ae0-4d76-bac6-3d3ac50b2a6a@mooneyspublist.apispark.net/v1/pubs', {});
+	return $resource('http://dublinpubs-mooneyserver.rhcloud.com/rest/pubs', {});
  });
 
 
@@ -36,9 +36,7 @@ pubListApp.controller('CheckinController', function ($scope, $cordovaGeolocation
 
     $scope.submitPub = function () {
         PubResource.save({
-    		'review': [
-        		$scope.review
-    		],
+    		'review': $scope.review,
     		'longitude': $scope.longitude,
     		'latitude': $scope.latitude,
     		'name': $scope.pubName
