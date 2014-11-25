@@ -1,4 +1,4 @@
-dublin-pubs
+dublin-pubs-cordova
 ===========
 
-A phonegap mobile app for Dublin Pubs
+A cordova app built with google maps and angular JS to show the pubs that me and Kev have drank in
